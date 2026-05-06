@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 700px;
+      max-width: 900px;
       margin: 40px auto;
       padding: 0 16px;
       line-height: 1.6;
@@ -18,22 +18,45 @@
       font-size: 28px;
       margin-bottom: 8px;
     }
-    p {
-      margin-top: 0;
+    .intro {
+      margin-bottom: 28px;
       color: #444;
     }
     .book {
+      display: flex;
+      gap: 18px;
       border-top: 1px solid #ddd;
-      padding: 18px 0;
+      padding: 22px 0;
+      align-items: flex-start;
     }
-    .book h2 {
+    .cover {
+      width: 110px;
+      height: auto;
+      border: 1px solid #ccc;
+      flex-shrink: 0;
+    }
+    .info {
+      flex: 1;
+    }
+    .info h2 {
       font-size: 20px;
-      margin: 0 0 6px;
+      margin: 0 0 8px;
+    }
+    .info p {
+      margin: 0 0 10px;
+      color: #333;
+    }
+    .label {
+      margin: 10px 0 6px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      color: #111;
     }
     .actions a {
       display: inline-block;
       margin-right: 10px;
-      margin-top: 8px;
+      margin-top: 6px;
       padding: 8px 12px;
       text-decoration: none;
       border: 1px solid #111;
@@ -42,49 +65,93 @@
     footer {
       border-top: 1px solid #ddd;
       margin-top: 30px;
-      padding-top: 18px;
+      padding-top: 20px;
+    }
+    footer p {
+      margin: 8px 0;
+    }
+    @media (max-width: 640px) {
+      .book {
+        flex-direction: column;
+      }
+      .cover {
+        width: 140px;
+      }
     }
   </style>
 </head>
 <body>
   <h1>Raul Robles</h1>
-  <p>Libros disponibles y formas de contacto.</p>
+  <p class="intro">Libros disponibles, formas de compra y contacto.</p>
 
   <div class="book">
-    <h2>Futuro Perdido</h2>
-    <div class="actions">
-      <a href="AQUI_TU_LINK_DE_COMPRA" target="_blank">Comprar</a>
-      <a href="mailto:TU_CORREO@EMAIL.COM?subject=Consulta%20sobre%20Futuro%20Perdido">Contacto</a>
+    <img src="memorias.jpg" alt="Portada de Memorias de Navidad" class="cover">
+    <div class="info">
+      <h2>1. Memorias de Navidad</h2>
+      <p>Una historia navideña ambientada en el nevado pueblo de Claro Alto, donde la llegada de un visitante enigmático despierta secretos, heridas antiguas y nuevas oportunidades de redención.</p>
+      <p class="label">COMPRA</p>
+      <div class="actions">
+        <a href="https://books2read.com/u/mgP2Oq" target="_blank" rel="noopener noreferrer">Books2Read</a>
+        <a href="https://payhip.com/b/8l12N" target="_blank" rel="noopener noreferrer">Payhip</a>
+      </div>
     </div>
   </div>
 
   <div class="book">
-    <h2>Invasión Pacífico</h2>
-    <div class="actions">
-      <a href="AQUI_TU_LINK_DE_COMPRA" target="_blank">Comprar</a>
-      <a href="mailto:TU_CORREO@EMAIL.COM?subject=Consulta%20sobre%20Invasión%20Pacífico">Contacto</a>
+    <img src="invasion.jpg" alt="Portada de Invasión Pacífica" class="cover">
+    <div class="info">
+      <h2>2. Invasión Pacífica</h2>
+      <p>Cuando una misteriosa entidad altera el equilibrio del mundo, un fotoperiodista se ve arrastrado a una historia de caos, conspiración y sacrificio que cambiará para siempre el destino de la humanidad.</p>
+      <p class="label">COMPRA</p>
+      <div class="actions">
+        <a href="https://payhip.com/b/vdeqS" target="_blank" rel="noopener noreferrer">Payhip</a>
+        <a href="https://books2read.com/u/3nNNN9" target="_blank" rel="noopener noreferrer">Books2Read</a>
+      </div>
     </div>
   </div>
 
   <div class="book">
-    <h2>El Peregrino</h2>
-    <div class="actions">
-      <a href="AQUI_TU_LINK_DE_COMPRA" target="_blank">Comprar</a>
-      <a href="mailto:TU_CORREO@EMAIL.COM?subject=Consulta%20sobre%20El%20Peregrino">Contacto</a>
+    <img src="medicina.jpg" alt="Portada de Medicina Navideña" class="cover">
+    <div class="info">
+      <h2>3. Medicina Navideña</h2>
+      <p>Un doctor aislado y herido por el pasado deberá reencontrarse con la esperanza, la compañía y la calidez de la Navidad en una historia de sanación emocional.</p>
+      <p class="label">COMPRA</p>
+      <div class="actions">
+        <a href="https://payhip.com/b/JIuDH" target="_blank" rel="noopener noreferrer">Payhip</a>
+        <a href="https://books2read.com/u/4NBNGG" target="_blank" rel="noopener noreferrer">Books2Read</a>
+      </div>
     </div>
   </div>
 
   <div class="book">
-    <h2>Santuario</h2>
-    <div class="actions">
-      <a href="AQUI_TU_LINK_DE_COMPRA_O_PREVENTA" target="_blank">Comprar</a>
-      <a href="mailto:TU_CORREO@EMAIL.COM?subject=Consulta%20sobre%20Santuario">Contacto</a>
+    <img src="futuro.jpg" alt="Portada de Futuro Perdido" class="cover">
+    <div class="info">
+      <h2>4. Futuro Perdido</h2>
+      <p>Tras el colapso inesperado de la energía mundial, un soldado marcado por su pasado deberá liderar una misión desesperada hacia un secreto oculto bajo el océano.</p>
+      <p class="label">COMPRA</p>
+      <div class="actions">
+        <a href="https://payhip.com/b/zIRBd" target="_blank" rel="noopener noreferrer">Payhip</a>
+        <a href="https://books2read.com/u/bpvjDX" target="_blank" rel="noopener noreferrer">Books2Read</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="book">
+    <img src="santuario.jpg" alt="Portada de Santuario" class="cover">
+    <div class="info">
+      <h2>5. Santuario</h2>
+      <p>Un ser de otro mundo pide asilo en una embajada y desencadena un conflicto político, moral y estratégico donde una sola decisión puede alterar el futuro de todos.</p>
+      <p class="label">COMPRA</p>
+      <div class="actions">
+        <a href="#">Próximamente</a>
+      </div>
     </div>
   </div>
 
   <footer>
-    <p>Contacto directo: <a href="mailto:TU_CORREO@EMAIL.COM">TU_CORREO@EMAIL.COM</a></p>
-    <p>X: <a href="https://x.com/raulrobleswrite" target="_blank">@raulrobleswrite</a></p>
+    <p><strong>Contacto</strong></p>
+    <p><a href="mailto:raulrobleswrite@gmail.com">raulrobleswrite@gmail.com</a></p>
+    <p><a href="https://wa.me/5804164873185?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20libros" target="_blank" rel="noopener noreferrer">WhatsApp</a></p>
   </footer>
 </body>
 </html>
