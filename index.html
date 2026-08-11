@@ -186,13 +186,23 @@
       flex-direction: column;
     }
 
-    .book-card img {
-      width: 100%;
-      height: auto;
-      max-height: 380px;
-      object-fit: cover;
-      display: block;
+    /* Contenedor y ajuste para visualizar las portadas completas sin recortar */
+    .book-card-img-container {
+      background-color: #f8f9fa;
+      padding: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border-bottom: 1px solid var(--line);
+    }
+
+    .book-card img {
+      width: auto;
+      max-width: 100%;
+      height: 380px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
     }
 
     .book-info {
@@ -296,7 +306,9 @@
     <div class="books-grid">
       <!-- Libro 1 -->
       <article class="book-card">
-        <img src="memorias.jpg" alt="Portada de Memorias de Navidad">
+        <div class="book-card-img-container">
+          <img src="memorias.jpg" alt="Portada de Memorias de Navidad">
+        </div>
         <div class="book-info">
           <h3>1. Memorias de Navidad</h3>
           <p>Una historia navideña ambientada en el nevado pueblo de Claro Alto, donde la llegada de un visitante enigmático despierta secretos, heridas antiguas y nuevas oportunidades de redención.</p>
@@ -313,7 +325,9 @@
 
       <!-- Libro 2 -->
       <article class="book-card">
-        <img src="invasion.jpg" alt="Portada de Invasión Pacífica">
+        <div class="book-card-img-container">
+          <img src="invasion.jpg" alt="Portada de Invasión Pacífica">
+        </div>
         <div class="book-info">
           <h3>2. Invasión Pacífica</h3>
           <p>Cuando una misteriosa entidad altera el equilibrio del mundo, un fotoperiodista se ve arrastrado a una historia de caos, conspiración y sacrificio que cambiará para siempre el destino de la humanidad.</p>
@@ -330,7 +344,9 @@
 
       <!-- Libro 3 -->
       <article class="book-card">
-        <img src="medicina.jpg" alt="Portada de Medicina Navideña">
+        <div class="book-card-img-container">
+          <img src="medicina.jpg" alt="Portada de Medicina Navideña">
+        </div>
         <div class="book-info">
           <h3>3. Medicina Navideña</h3>
           <p>Un doctor aislado y herido por el pasado deberá reencontrarse con la esperanza, la compañía y la calidez de la Navidad en una historia de sanación emocional.</p>
@@ -347,7 +363,9 @@
 
       <!-- Libro 4 -->
       <article class="book-card">
-        <img src="futuro.jpg" alt="Portada de Futuro Perdido">
+        <div class="book-card-img-container">
+          <img src="futuro.jpg" alt="Portada de Futuro Perdido">
+        </div>
         <div class="book-info">
           <h3>4. Futuro Perdido</h3>
           <p>Tras el colapso inesperado de la energía mundial, un soldado marcado por su pasado deberá liderar una misión desesperada hacia un secreto oculto bajo el océano.</p>
@@ -364,7 +382,9 @@
 
       <!-- Libro 5 -->
       <article class="book-card">
-        <img src="santuario.jpg" alt="Portada de Santuario">
+        <div class="book-card-img-container">
+          <img src="santuario.jpg" alt="Portada de Santuario">
+        </div>
         <div class="book-info">
           <h3>5. Santuario</h3>
           <p>Un ser de otro mundo pide asilo en una embajada y desencadena un conflicto político, moral y estratégico donde una sola decisión puede alterar el futuro de todos.</p>
