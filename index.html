@@ -1,260 +1,433 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Raul Robles - Libros</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Raúl Robles | Libros</title>
+
   <style>
-    /* Estilos base y tipografía */
+    :root {
+      --bg: #fcfcfb;
+      --surface: #ffffff;
+      --text: #161616;
+      --muted: #5f5f5f;
+      --line: #dddddd;
+      --ebook: #2e7d32;
+      --audio: #1565c0;
+      --print: #c62828;
+      --accent: #111111;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f4f4f9;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
     }
 
-    /* Encabezado */
-    header {
-      background-color: #2c3e50;
-      color: #fff;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-    header h1 {
-      margin-top: 0;
-      font-size: 2.5rem;
-    }
-    header p {
-      max-width: 600px;
+    .wrap {
+      max-width: 980px;
       margin: 0 auto;
-      font-size: 1.1rem;
-      color: #d1d8e0;
+      padding: 32px 16px 56px;
     }
 
-    /* Contenedor principal */
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+    header {
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
     }
 
-    /* Sección Sobre el autor */
-    .about {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      margin-bottom: 3rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-    .about h2 {
-      margin-top: 0;
-      color: #2c3e50;
+    h1 {
+      font-size: 32px;
+      margin: 0 0 10px;
     }
 
-    /* Cuadrícula de libros (Responsive) */
-    .books-grid {
-      display: grid;
-      grid-template-columns: 1fr; /* 1 columna en móviles */
-      gap: 2rem;
-    }
-    @media (min-width: 768px) {
-      .books-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en PC */
-      }
+    .intro {
+      margin: 0;
+      color: var(--muted);
+      max-width: 700px;
     }
 
-    /* Tarjetas de cada libro */
-    .book-card {
-      background: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    .author-box {
+      margin: 24px 0 32px;
+      padding: 18px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    .author-box h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .author-box p {
+      margin: 0;
+      color: #333;
+    }
+
+    .book {
       display: flex;
-      flex-direction: column;
+      gap: 20px;
+      border-top: 1px solid var(--line);
+      padding: 24px 0;
+      align-items: flex-start;
     }
-    .book-card img {
-      width: 100%;
+
+    .cover {
+      width: 120px;
       height: auto;
-      display: block;
-      object-fit: cover;
-      max-height: 400px; /* Evita que las imágenes sean demasiado largas */
-    }
-    .book-info {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .book-info h3 {
-      margin-top: 0;
-      color: #2c3e50;
-    }
-    .book-info p {
-      font-size: 0.95rem;
-      color: #555;
+      border: 1px solid #ccc;
+      flex-shrink: 0;
+      background: #fff;
     }
 
-    /* Sección de botones de compra */
-    .buy-section {
-      margin-top: auto; /* Empuja los botones hacia abajo */
-      padding-top: 1.5rem;
-      border-top: 1px solid #eee;
+    .info {
+      flex: 1;
     }
-    .buy-section p {
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      font-size: 0.85rem;
-      color: #7f8c8d;
-      letter-spacing: 1px;
+
+    .info h3 {
+      font-size: 22px;
+      margin: 0 0 8px;
     }
-    .buttons {
+
+    .info p {
+      margin: 0 0 10px;
+      color: #333;
+    }
+
+    .label {
+      margin: 14px 0 8px;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+    }
+
+    .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .buttons a {
-      flex: 1 1 30%;
-      text-align: center;
-      text-decoration: none;
-      background-color: #34495e;
-      color: #fff;
-      padding: 0.6rem 0.5rem;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      transition: background-color 0.2s ease;
-    }
-    .buttons a:hover {
-      background-color: #2c3e50;
+      gap: 10px;
     }
 
-    /* Pie de página */
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #ecf0f1;
-      color: #333;
-      margin-top: 3rem;
-    }
-    footer a {
-      color: #2980b9;
+    .actions a {
+      display: inline-block;
+      padding: 10px 14px;
       text-decoration: none;
+      border: 1px solid var(--accent);
+      color: #fff;
+      font-size: 14px;
+      min-width: 160px;
+      text-align: center;
+    }
+
+    .ebook {
+      background: var(--ebook);
+      border-color: var(--ebook) !important;
+    }
+
+    .audio {
+      background: var(--audio);
+      border-color: var(--audio) !important;
+    }
+
+    .print {
+      background: var(--print);
+      border-color: var(--print) !important;
+    }
+
+    .actions a:hover {
+      opacity: 0.92;
+    }
+
+    /* Oferta especial: Combo navideño */
+    .combo {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin: 28px 0 10px;
+      padding: 24px;
+      background: linear-gradient(135deg, #2b1307, #6d1a14);
+      border: 2px solid #caa24d;
+      color: #fff8e8;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.20);
+    }
+
+    .combo .cover {
+      width: 220px;
+      border: 2px solid #e6bf64;
+    }
+
+    .combo .info h3 {
+      color: #f5cf78;
+      font-size: 26px;
+      line-height: 1.18;
+    }
+
+    .combo .info p {
+      color: #fff8e8;
+    }
+
+    .combo .label {
+      color: #f5cf78;
+    }
+
+    .combo .combo-button {
+      display: inline-block;
+      padding: 13px 18px;
+      background: #c58a20;
+      border: 1px solid #f5cf78;
+      color: #1e0d05;
       font-weight: bold;
-      margin: 0 0.5rem;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .combo .combo-button:hover {
+      opacity: 0.88;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 34px;
+      padding-top: 20px;
+    }
+
+    footer p {
+      margin: 8px 0;
+    }
+
+    .contact-links a {
+      margin-right: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .book,
+      .combo {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cover {
+        width: 150px;
+      }
+
+      .combo .cover {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .actions a,
+      .combo .combo-button {
+        width: 100%;
+        box-sizing: border-box;
+      }
     }
   </style>
 </head>
+
 <body>
+  <div class="wrap">
 
-  <header>
-    <h1>Raul Robles</h1>
-    <p>Novelas de ciencia ficción, misterio y emociones humanas.</p>
-  </header>
+    <header>
+      <h1>Raúl Robles</h1>
+      <p class="intro">
+        Novelas de ciencia ficción, misterio y emociones humanas.
+        Aquí encontrarás mis libros disponibles, formatos de compra
+        y formas de contacto.
+      </p>
+    </header>
 
-  <div class="container">
-    <section class="about">
+    <section class="author-box">
       <h2>Sobre el autor</h2>
-      <p>Raul Robles escribe historias donde la ciencia ficción, el thriller y la reflexión humana se entrelazan. Sus novelas exploran decisiones límite, conflictos morales y el impacto de lo extraordinario en personas comunes.</p>
+      <p>
+        Raúl Robles escribe historias donde la ciencia ficción, el thriller
+        y la reflexión humana se entrelazan. Sus novelas exploran decisiones
+        límite, conflictos morales y el impacto de lo extraordinario en
+        personas comunes.
+      </p>
     </section>
 
-    <div class="books-grid">
-      
-      <!-- Libro 1 -->
-      <article class="book-card">
-        <img src="memorias.jpg" alt="Portada de Memorias de Navidad">
-        <div class="book-info">
-          <h3>1. Memorias de Navidad</h3>
-          <p>Una historia navideña ambientada en el nevado pueblo de Claro Alto, donde la llegada de un visitante enigmático despierta secretos, heridas antiguas y nuevas oportunidades de redención.</p>
-          <div class="buy-section">
-            <p>COMPRA</p>
-            <div class="buttons">
-              <a href="https://books2read.com/u/mgP2Oq" rel="noopener noreferrer" target="_blank">Ebook</a>
-              <a href="https://payhip.com/b/8l12N" rel="noopener noreferrer" target="_blank">Audiolibro</a>
-              <a href="https://www.autoreseditores.com/libro/31532/raul-robles/memorias-de-navidad.html" rel="noopener noreferrer" target="_blank">Impreso</a>
-            </div>
-          </div>
-        </div>
-      </article>
+    <section class="combo">
+      <img
+        src="combo.jpg"
+        alt="Saga de Claro Alto - El Combo Navideño Completo: 2 novelas y 2 audiolibros"
+        class="cover"
+      >
 
-      <!-- Libro 2 -->
-      <article class="book-card">
-        <img src="invasion.jpg" alt="Portada de Invasión Pacífica">
-        <div class="book-info">
-          <h3>2. Invasión Pacífica</h3>
-          <p>Cuando una misteriosa entidad altera el equilibrio del mundo, un fotoperiodista se ve arrastrado a una historia de caos, conspiración y sacrificio que cambiará para siempre el destino de la humanidad.</p>
-          <div class="buy-section">
-            <p>COMPRA</p>
-            <div class="buttons">
-              <a href="https://books2read.com/u/3nNNN9" rel="noopener noreferrer" target="_blank">Ebook</a>
-              <a href="https://payhip.com/b/vdeqS" rel="noopener noreferrer" target="_blank">Audiolibro</a>
-              <a href="https://www.autoreseditores.com/libro/31533/raul-robles/invasion-pacifica.html" rel="noopener noreferrer" target="_blank">Impreso</a>
-            </div>
-          </div>
-        </div>
-      </article>
+      <div class="info">
+        <h3>Saga de Claro Alto – El Combo Navideño Completo</h3>
 
-      <!-- Libro 3 -->
-      <article class="book-card">
-        <img src="medicina.jpg" alt="Portada de Medicina Navideña">
-        <div class="book-info">
-          <h3>3. Medicina Navideña</h3>
-          <p>Un doctor aislado y herido por el pasado deberá reencontrarse con la esperanza, la compañía y la calidez de la Navidad en una historia de sanación emocional.</p>
-          <div class="buy-section">
-            <p>COMPRA</p>
-            <div class="buttons">
-              <a href="https://books2read.com/u/4NBNGG" rel="noopener noreferrer" target="_blank">Ebook</a>
-              <a href="https://payhip.com/b/JIuDH" rel="noopener noreferrer" target="_blank">Audiolibro</a>
-              <a href="https://www.autoreseditores.com/libro/31741/raul-robles/medicina-navidena.html" rel="noopener noreferrer" target="_blank">Impreso</a>
-            </div>
-          </div>
-        </div>
-      </article>
+        <p>
+          Dos historias navideñas para leer y escuchar: misterio, redención,
+          esperanza y emoción en el universo de Claro Alto.
+        </p>
 
-      <!-- Libro 4 -->
-      <article class="book-card">
-        <img src="futuro.jpg" alt="Portada de Futuro Perdido">
-        <div class="book-info">
-          <h3>4. Futuro Perdido</h3>
-          <p>Tras el colapso inesperado de la energía mundial, un soldado marcado por su pasado deberá liderar una misión desesperada hacia un secreto oculto bajo el océano.</p>
-          <div class="buy-section">
-            <p>COMPRA</p>
-            <div class="buttons">
-              <a href="https://books2read.com/u/bpvjDX" rel="noopener noreferrer" target="_blank">Ebook</a>
-              <a href="https://payhip.com/b/zIRBd" rel="noopener noreferrer" target="_blank">Audiolibro</a>
-              <a href="https://www.autoreseditores.com/libro/32693/raul-robles/futuro-perdido.html" rel="noopener noreferrer" target="_blank">Impreso</a>
-            </div>
-          </div>
-        </div>
-      </article>
+        <p>
+          Incluye las novelas <strong>Memorias de Navidad</strong> y
+          <strong>Medicina Navideña</strong>, junto con sus dos audiolibros
+          en producción multi-voz de alta calidad.
+        </p>
 
-      <!-- Libro 5 -->
-      <article class="book-card">
-        <img src="santuario.jpg" alt="Portada de Santuario">
-        <div class="book-info">
-          <h3>5. Santuario</h3>
-          <p>Un ser de otro mundo pide asilo en una embajada y desencadena un conflicto político, moral y estratégico donde una sola decisión puede alterar el futuro de todos.</p>
-          <div class="buy-section">
-            <p>COMPRA</p>
-            <div class="buttons">
-              <a href="https://books2read.com/u/bWXwwq" rel="noopener noreferrer" target="_blank">Ebook</a>
-              <a href="https://payhip.com/b/06Ari" rel="noopener noreferrer" target="_blank">Audiolibro</a>
-              <a href="https://www.autoreseditores.com/libro/33898/raul-robles/santuario.html" rel="noopener noreferrer" target="_blank">Impreso</a>
-            </div>
-          </div>
-        </div>
-      </article>
+        <p>
+          Un pack especial de <strong>4 archivos premium</strong> para
+          disfrutar la saga completa o regalar una experiencia navideña
+          diferente.
+        </p>
 
+        <p class="label">OFERTA ESPECIAL · 2 NOVELAS + 2 AUDIOLIBROS</p>
+
+        <div class="actions">
+          <a
+            class="combo-button"
+            href="https://payhip.com/b/mXV29"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            QUIERO EL COMBO NAVIDEÑO
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="book">
+      <img src="memorias.jpg" alt="Portada de Memorias de Navidad" class="cover">
+
+      <div class="info">
+        <h3>1. Memorias de Navidad</h3>
+
+        <p>
+          Una historia navideña ambientada en el nevado pueblo de Claro Alto,
+          donde la llegada de un visitante enigmático despierta secretos,
+          heridas antiguas y nuevas oportunidades de redención.
+        </p>
+
+        <p class="label">COMPRA</p>
+
+        <div class="actions">
+          <a class="ebook" href="https://books2read.com/u/mgP2Oq" target="_blank" rel="noopener noreferrer">
+            Comprar ebook
+          </a>
+
+          <a class="audio" href="https://payhip.com/b/8l12N" target="_blank" rel="noopener noreferrer">
+            Comprar audiolibro
+          </a>
+
+          <a class="print" href="https://www.autoreseditores.com/libro/31532/raul-robles/memorias-de-navidad.html" target="_blank" rel="noopener noreferrer">
+            Comprar impreso
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <footer>
-    <p><strong>Contacto</strong></p>
-    <p>
-      <a href="mailto:raulrobleswrite@gmail.com">raulrobleswrite@gmail.com</a> |
-      <a href="https://wa.me/5804164873185?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20tus%20libros" rel="noopener noreferrer" target="_blank">WhatsApp</a>
-    </p>
-  </footer>
+    <div class="book">
+      <img src="invasion.jpg" alt="Portada de Invasión Pacífica" class="cover">
 
-</body>
-</html>
+      <div class="info">
+        <h3>2. Invasión Pacífica</h3>
+
+        <p>
+          Cuando una misteriosa entidad altera el equilibrio del mundo,
+          un fotoperiodista se ve arrastrado a una historia de caos,
+          conspiración y sacrificio que cambiará para siempre el destino
+          de la humanidad.
+        </p>
+
+        <p class="label">COMPRA</p>
+
+        <div class="actions">
+          <a class="ebook" href="https://books2read.com/u/3nNNN9" target="_blank" rel="noopener noreferrer">
+            Comprar ebook
+          </a>
+
+          <a class="audio" href="https://payhip.com/b/vdeqS" target="_blank" rel="noopener noreferrer">
+            Comprar audiolibro
+          </a>
+
+          <a class="print" href="https://www.autoreseditores.com/libro/31533/raul-robles/invasion-pacifica.html" target="_blank" rel="noopener noreferrer">
+            Comprar impreso
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <img src="medicina.jpg" alt="Portada de Medicina Navideña" class="cover">
+
+      <div class="info">
+        <h3>3. Medicina Navideña</h3>
+
+        <p>
+          Un doctor aislado y herido por el pasado deberá reencontrarse
+          con la esperanza, la compañía y la calidez de la Navidad
+          en una historia de sanación emocional.
+        </p>
+
+        <p class="label">COMPRA</p>
+
+        <div class="actions">
+          <a class="ebook" href="https://books2read.com/u/4NBNGG" target="_blank" rel="noopener noreferrer">
+            Comprar ebook
+          </a>
+
+          <a class="audio" href="https://payhip.com/b/JIuDH" target="_blank" rel="noopener noreferrer">
+            Comprar audiolibro
+          </a>
+
+          <a class="print" href="https://www.autoreseditores.com/libro/31741/raul-robles/medicina-navidena.html" target="_blank" rel="noopener noreferrer">
+            Comprar impreso
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <img src="futuro.jpg" alt="Portada de Futuro Perdido" class="cover">
+
+      <div class="info">
+        <h3>4. Futuro Perdido</h3>
+
+        <p>
+          Tras el colapso inesperado de la energía mundial, un soldado
+          marcado por su pasado deberá liderar una misión desesperada
+          hacia un secreto oculto bajo el océano.
+        </p>
+
+        <p class="label">COMPRA</p>
+
+        <div class="actions">
+          <a class="ebook" href="https://books2read.com/u/bpvjDX" target="_blank" rel="noopener noreferrer">
+            Comprar ebook
+          </a>
+
+          <a class="audio" href="https://payhip.com/b/zIRBd" target="_blank" rel="noopener noreferrer">
+            Comprar audiolibro
+          </a>
+
+          <a class="print" href="https://www.autoreseditores.com/libro/32693/raul-robles/futuro-perdido.html" target="_blank" rel="noopener noreferrer">
+            Comprar impreso
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="book">
+      <img src="santuario.jpg" alt="Portada de Santuario" class="cover">
+
+      <div class="info">
+        <h3>5. Santuario</h3>
+
+        <p>
+          Un ser de otro mundo pide asilo en una embajada y desencadena
+          un conflicto político, moral y estratégico donde una sola decisión
+          puede alterar el futuro de todos.
+        </p>
+
+        <p class="label">COMPRA</p>
+
+        <div class="actions">
+          <a
