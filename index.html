@@ -68,14 +68,14 @@
       color: #2c3e50;
     }
 
-    /* Banner Promocional Combo Navideño */
+    /* Banner Promocional */
     .promo-card {
       background: linear-gradient(135deg, #4a0000 0%, #1a0000 100%);
       color: #ffffff;
       border: 2px solid var(--promo-gold);
       border-radius: 8px;
       padding: 2rem;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
@@ -164,11 +164,41 @@
       transform: translateY(-2px);
     }
 
+    /* Estilo específico para la oferta Sci-Fi */
+    .promo-card.scifi {
+      background: linear-gradient(135deg, #07192f 0%, #020912 100%);
+      border: 2px solid #00bcd4;
+      box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
+    }
+
+    .promo-card.scifi .promo-img {
+      border: 1px solid #00bcd4;
+    }
+
+    .promo-card.scifi .promo-badge {
+      background: #00e5ff;
+      color: #000;
+    }
+
+    .promo-card.scifi h3 {
+      color: #00e5ff;
+    }
+
+    .promo-card.scifi .btn-combo {
+      background: #00e5ff;
+      color: #000;
+    }
+
+    .promo-card.scifi .btn-combo:hover {
+      background: #00b4d8;
+    }
+
     /* Grid de Libros */
     .books-grid {
       display: grid;
       grid-template-columns: 1fr;
       gap: 2rem;
+      margin-top: 3rem;
     }
 
     @media (min-width: 768px) {
@@ -186,7 +216,6 @@
       flex-direction: column;
     }
 
-    /* Contenedor y ajuste para visualizar las portadas completas sin recortar */
     .book-card-img-container {
       background-color: #f8f9fa;
       padding: 1rem 0;
@@ -300,6 +329,23 @@
           <li>✔ Incluye versión texto e historias habladas completas.</li>
         </ul>
         <a href="https://payhip.com/b/mXV29" class="btn-combo" target="_blank" rel="noopener noreferrer">Obtener la Saga Completa</a>
+      </div>
+    </section>
+
+    <!-- Oferta Especial Combo Sci-Fi Thrillers -->
+    <section class="promo-card scifi">
+      <img src="combo-scifi.jpg" alt="Colección Sci-Fi Thrillers - Combo Maratón Completa" class="promo-img">
+      <div class="promo-info">
+        <span class="promo-badge">Pack de 6 Archivos Premium</span>
+        <h3>Colección Sci-Fi Thrillers — Combo Maratón Completa (3 Novelas + 3 Audiolibros)</h3>
+        <p>Llévate la trilogía completa de ciencia ficción: <strong>Futuro Perdido</strong>, <strong>Invasión Pacífica</strong> y <strong>Santuario</strong> en formato texto y audiolibro.</p>
+        <ul class="promo-features">
+          <li>✔ 3 Novelas completas en Ebook (EPUB).</li>
+          <li>✔ 3 Audiolibros en formato M4B.</li>
+          <li>✔ Elenco de voces y narración inmersiva con producciones multi-voz.</li>
+          <li>✔ Descarga digital inmediata con audio de alta calidad.</li>
+        </ul>
+        <a href="https://payhip.com/b/OezDY" class="btn-combo" target="_blank" rel="noopener noreferrer">Obtener Colección Sci-Fi</a>
       </div>
     </section>
 
